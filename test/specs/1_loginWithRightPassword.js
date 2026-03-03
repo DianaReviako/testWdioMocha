@@ -3,8 +3,7 @@ import allureReporter from '@wdio/allure-reporter';
 
 describe('Login as correct user', () => {
     it('Login with right password', async () => {
-        const responsibleName = 'Diana Panda dadadada';
-        allureReporter.addLabel('owner', responsibleName);
+        allureReporter.addLabel('owner', process.env.OWNER_NAME);
 
 
         allureReporter.addStep('Open the login page');
