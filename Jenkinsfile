@@ -17,7 +17,7 @@ pipeline {
                 deleteDir()
                 echo 'Pulling code...'
                 checkout scmGit(
-                    branches: [[name: "*/${params.BRANCH}"]],
+                    branches: [[name: "/main"]],
                     userRemoteConfigs: [[credentialsId: 'githubAuthToken', url: 'https://github.com/DianaReviako/testWdioMocha']]
                 )
             }
