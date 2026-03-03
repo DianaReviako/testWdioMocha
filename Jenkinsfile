@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'OWNER_NAME', defaultValue: 'Diana Revyako', description: 'Owner name for Allure report')
+    }
+
     tools {
         allure 'allureReport'
     }
