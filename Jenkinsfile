@@ -46,3 +46,10 @@ pipeline {
         }
     }
 }
+
+def cleanUp(List folders) {
+    folders.each { folder ->
+        echo ">>> Cleaning up folder: ${folder}"
+        bat "if exist ${folder} rmdir /s /q ${folder}"
+    }
+}
