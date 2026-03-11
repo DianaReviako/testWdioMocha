@@ -4,6 +4,8 @@ import allureReporter from '@wdio/allure-reporter';
 describe('Login as correct user', () => {
     it('Login with right password', async () => {
         allureReporter.addLabel('owner', process.env.OWNER_NAME);
+        allureReporter.addLabel('severity', process.env.SEVERITY);
+        allureReporter.addDescription('Responsible person', process.env.OWNER_NAME);
 
 
         allureReporter.addStep('Open the login page');
