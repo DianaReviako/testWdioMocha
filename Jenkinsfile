@@ -4,6 +4,7 @@ pipeline {
     parameters {
         string(name: 'OWNER_NAME', defaultValue: 'Diana Revyako', description: 'Owner name for Allure report')
         string(name: 'SEVERITY', defaultValue: 'normal', description: 'Severity level for Allure report')
+        string(name: 'RESPONSIBLE_PERSON', defaultValue: 'Diana Revyako', description: 'Responsible person for Allure report')
     }
 
     tools {
