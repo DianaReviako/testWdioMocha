@@ -50,23 +50,22 @@ pipeline {
         always {
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
-    }
-
-    failure {
+        success {
             script {
-            mail to: 'eschoodzin@gmail.com',
-                 subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: """Bummer, the build crashed.
-                 
-            Check the errors here: ${env.BUILD_URL}console
+                mail to: 'eschoodzin@gmail.com',
+                    subject: "✅ Build Succeeded: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """Hooray, the build succeeded!
 
-            Parameters:
-            - Branch: ${params.BRANCH}
-            - Tag: ${params.TAG}
-            - Responsible Person: ${params.RESPONSIBLE_PERSON}
-            """
+Check the errors here: ${env.BUILD_URL}console
+
+Parameters:
+- Branch: ${params.BRANCH}
+- Tag: ${params.TAG}
+- Responsible Person: ${params.RESPONSIBLE_PERSON}
+"""
             }
         }
+    }
 }
 
 def cleanUp(List folders) {
