@@ -51,6 +51,22 @@ pipeline {
             allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
+
+    failure {
+            script {
+            mail to: 'eschoodzin@gmail.com',
+                 subject: "❌ Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: """Bummer, the build crashed.
+                 
+            Check the errors here: ${env.BUILD_URL}console
+
+            Parameters:
+            - Branch: ${params.BRANCH}
+            - Tag: ${params.TAG}
+            - Responsible Person: ${params.RESPONSIBLE_PERSON}
+            """
+            }
+        }
 }
 
 def cleanUp(List folders) {
